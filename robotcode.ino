@@ -8,10 +8,10 @@
 
 //AFMotor declaration
 AF_DCMotor motor1(4);
-AF_DCMotor motor12(3);
+AF_DCMotor motor12(3);//
 
 AF_DCMotor motor21(2);
-AF_DCMotor motor22(1);
+AF_DCMotor motor22(1);//
 
 
 //vars
@@ -92,9 +92,13 @@ void loop() {
 
     }
     else if(600<leftspeed && leftspeed<1024){
-     motor1.run(FORWARD);
+     motor11.run(FORWARD);
+     motor12.run(FORWARD);//
+
      leftspeed=map(leftspeed,600,1024,100,255);
-     motor1.setSpeed(leftspeed);
+     motor11.setSpeed(leftspeed);
+     motor12.setSpeed(leftspeed);//
+
     }
 
 
@@ -103,27 +107,38 @@ void loop() {
     //right motor speed set
     if(rightspeed<400){
      rightspeed = 100:
-     motor2.run(BACKWARD);
-     motor2.setSpeed(rightspeed);
+     motor21.run(BACKWARD);
+     motor22.run(BACKWARD);//
+     motor21.setSpeed(rightspeed);
+     motor22.setSpeed(rightspeed);//
     }
-    else if(400<rightspeed<600){
-     motor2.run(RELEASE);
+    else if(400<rightspeed && rightspeed<600){
+     motor21.run(RELEASE);
+     motor22.run(RELEASE);//
     }
-    else if(600<rightspeed<1024){
-     motor2.run(FORWARD);
+    else if(600<rightspeed && rightspeed<1024){
+     motor21.run(FORWARD);
+     motor22.run(FORWARD);//
      rightspeed=map(rightspeed,600,1024,100,255);
-     motor2.setSpeed(rightspeed);
+     motor21.setSpeed(rightspeed);
+     motor22.setSpeed(rightspeed);//
     }
 
 
   }else{
     timeB=millis();
     if((timeB-timeA)<1000){
-        motor1.setSpeed(leeftspeed);
-        motor2.setSpeed(rightspeed);
+        motor11.setSpeed(leeftspeed);
+        motor12.setSpeed(leeftspeed);//
+
+        motor21.setSpeed(rightspeed);
+        motor22.setSpeed(rightspeed);//
       }else{
-      motor1.run(RELEASE);
-      motor2.run(RELEASE);
+      motor11.run(RELEASE);
+      motor12.run(RELEASE);//
+
+      motor21.run(RELEASE);
+      motor22.run(RELEASE);//
     }
   }
 
