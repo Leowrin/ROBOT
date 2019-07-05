@@ -14,7 +14,10 @@ AF_DCMotor motor2(3);
 //vars
 String data;
 String entryA;
-
+int leftspeed;
+int rightspeed;
+long timeA;
+long timeB;
 
 
 
@@ -38,15 +41,24 @@ void setup() {
 
 }
 
+
+
+
+
+
 void loop() {
   uint8_t i;
+
+
+
+
 
 
 
   if (Serial.available()>0){
 
    data = Serial.readString();
-
+   timeA=millis();
 
    entryA = data.substring(12,16);
    leftspeed = entryA.toInt();
@@ -88,8 +100,12 @@ void loop() {
 
 
   }else{
+    timeB=millis()
+    if((timeB-timeA)<1000){
+      motor1.setSpeed(leftspeed);
+      motor2.setSpeed(rightspeed);
+    }
 
-    
   }
 
 
