@@ -7,7 +7,7 @@
 
 
 //AFMotor declaration
-AF_DCMotor motor1(4);
+AF_DCMotor motor11(4);
 AF_DCMotor motor12(3);//
 
 AF_DCMotor motor21(2);
@@ -60,10 +60,6 @@ void loop() {
 
 
 
-
-
-
-
   if (Serial.available()>0){
 
    data = Serial.readString();
@@ -75,21 +71,21 @@ void loop() {
    entryA = data.substring(16,20);
    rightspeed = entryA.toInt();
 
+//--------------------------
 
    //left motor speed set
    if(leftspeed<400){
      leftspeed = 100;
+
      motor11.run(BACKWARD);
      motor12.run(BACKWARD);//
 
      motor11.setSpeed(leftspeed);
      motor12.setSpeed(leftspeed); //
-
     }
     else if(400<leftspeed  && leftspeed<600){
      motor11.run(RELEASE);
      motor12.run(RELEASE);//
-
     }
     else if(600<leftspeed && leftspeed<1024){
      motor11.run(FORWARD);
@@ -98,17 +94,15 @@ void loop() {
      leftspeed=map(leftspeed,600,1024,100,255);
      motor11.setSpeed(leftspeed);
      motor12.setSpeed(leftspeed);//
-
     }
-
-
-
-
+//------------
     //right motor speed set
     if(rightspeed<400){
      rightspeed = 100:
+
      motor21.run(BACKWARD);
      motor22.run(BACKWARD);//
+
      motor21.setSpeed(rightspeed);
      motor22.setSpeed(rightspeed);//
     }
@@ -119,11 +113,13 @@ void loop() {
     else if(600<rightspeed && rightspeed<1024){
      motor21.run(FORWARD);
      motor22.run(FORWARD);//
+
      rightspeed=map(rightspeed,600,1024,100,255);
      motor21.setSpeed(rightspeed);
      motor22.setSpeed(rightspeed);//
     }
 
+//---------------
 
   }else{
     timeB=millis();
