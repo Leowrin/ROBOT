@@ -33,8 +33,8 @@ void setup() {
 
 
 //setup moteur
-  motor1.setSpeed(0);
-  motor2.setSpeed(0);
+  motor1.setSpeed(200);
+  motor2.setSpeed(200);
 
   motor1.run(RELEASE);
   motor2.run(RELEASE);
@@ -69,15 +69,16 @@ void loop() {
 
    //left motor speed set
    if(leftspeed<400){
+     leftspeed = 100;
      motor1.run(BACKWARD);
-     motor1.setSpeed(180);
+     motor1.setSpeed(leftspeed);
     }
-    else if(400<leftspeed<600){
+    else if(400<leftspeed  && leftspeed<600){
      motor1.run(RELEASE);
     }
-    else if(600<leftspeed<1024){
+    else if(600<leftspeed && leftspeed<1024){
      motor1.run(FORWARD);
-     leftspeed=map(leftspeed,600,1024,100,250);
+     leftspeed=map(leftspeed,600,1024,100,255);
      motor1.setSpeed(leftspeed);
     }
 
@@ -86,26 +87,29 @@ void loop() {
 
     //right motor speed set
     if(rightspeed<400){
+     rightspeed = 100:
      motor2.run(BACKWARD);
-     motor2.setSpeed(180);
+     motor2.setSpeed(rightspeed);
     }
     else if(400<rightspeed<600){
      motor2.run(RELEASE);
     }
     else if(600<rightspeed<1024){
      motor2.run(FORWARD);
-     rightspeed=map(rightspeed,600,1024,100,250);
+     rightspeed=map(rightspeed,600,1024,100,255);
      motor2.setSpeed(rightspeed);
     }
 
 
   }else{
-    timeB=millis()
+    timeB=millis();
     if((timeB-timeA)<1000){
-      motor1.setSpeed(leftspeed);
-      motor2.setSpeed(rightspeed);
+        motor1.setSpeed(leeftspeed);
+        motor2.setSpeed(rightspeed);
+      }else{
+      motor1.run(RELEASE);
+      motor2.run(RELEASE);
     }
-
   }
 
 
