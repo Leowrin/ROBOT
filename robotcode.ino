@@ -8,7 +8,10 @@
 
 //AFMotor declaration
 AF_DCMotor motor1(4);
-AF_DCMotor motor2(3);
+AF_DCMotor motor12(3);
+
+AF_DCMotor motor21(2);
+AF_DCMotor motor22(1);
 
 
 //vars
@@ -33,11 +36,17 @@ void setup() {
 
 
 //setup moteur
-  motor1.setSpeed(200);
-  motor2.setSpeed(200);
+  motor11.setSpeed(200);
+  motor12.setSpeed(200);//
 
-  motor1.run(RELEASE);
-  motor2.run(RELEASE);
+  motor21.setSpeed(200);
+  motor22.setSpeed(200);//
+
+  motor11.run(RELEASE);
+  motor12.run(RELEASE);//
+
+  motor21.run(RELEASE);
+  motor22.run(RELEASE);//
 
 }
 
@@ -70,11 +79,17 @@ void loop() {
    //left motor speed set
    if(leftspeed<400){
      leftspeed = 100;
-     motor1.run(BACKWARD);
-     motor1.setSpeed(leftspeed);
+     motor11.run(BACKWARD);
+     motor12.run(BACKWARD);//
+
+     motor11.setSpeed(leftspeed);
+     motor12.setSpeed(leftspeed); //
+
     }
     else if(400<leftspeed  && leftspeed<600){
-     motor1.run(RELEASE);
+     motor11.run(RELEASE);
+     motor12.run(RELEASE);//
+
     }
     else if(600<leftspeed && leftspeed<1024){
      motor1.run(FORWARD);
